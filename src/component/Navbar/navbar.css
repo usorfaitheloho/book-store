@@ -1,0 +1,35 @@
+.navBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1500px;
+    border: 1px solid black;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    margin-right: 4rem;
+  }
+  ul li{
+      list-style-type: none;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .nav > * + * {
+    margin-left: 20px;
+  }
+  
+  .icon {
+    height: 30px;
+    width: 30px;
+    color: lightblue;
+    border: 1px solid black;
+    border-radius: 100%;
+  }

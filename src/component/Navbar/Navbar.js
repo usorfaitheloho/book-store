@@ -1,13 +1,14 @@
 import React from 'react';
+import './navbar.css';
 
 const Navbar = () => (
-  <div className='navBar'>
-    <div className="logo">Bookstore LOGO</div>
+  <div className="navBar">
+    <div className="logo">BookStore CMS</div>
     <ul className="nav">
-      <li>Books</li>
-      <li>Categories</li>
+      <li>Home</li>
+      <li>Category</li>
     </ul>
-    <div className="icon">A</div>
+    <div className="icon">.</div>
   </div>
 );
 
