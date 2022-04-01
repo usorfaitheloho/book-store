@@ -1,14 +1,13 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
 import BookForm from './BookForm';
 import BookList from './BookList';
+import './Bookcontainer.css';
 
-const Bookcontainer = () => (
-  <div>
-    <Navbar />
+const BookContainer = () => (
+  <div className="row">
     <BookList />
     <BookForm />
   </div>
 );
 
-export default Bookcontainer;
+export default BookContainer;

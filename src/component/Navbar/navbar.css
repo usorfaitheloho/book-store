@@ -3,9 +3,9 @@
     align-items: center;
     width: 100%;
     max-width: 1500px;
-    border: 1px solid black;
+    border: 1px solid gray;
     padding: 20px;
-    position: fixed;
+    margin-bottom: 8px;
     top: 0;
     justify-content: space-between;
   }
@@ -13,13 +13,13 @@
   .logo {
     margin-right: 4rem;
   }
-  ul li{
+  .nav li{
       list-style-type: none;
+      text-decoration: none;
   }
   
   .nav {
     display: flex;
-    justify-content: flex-start;
   }
   
   .nav > * + * {
@@ -29,7 +29,7 @@
   .icon {
     height: 30px;
     width: 30px;
-    color: lightblue;
+    background-color: aquamarine;
     border: 1px solid black;
-    border-radius: 100%;
+    border-radius: 50%;
   }

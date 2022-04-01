@@ -1,18 +1,20 @@
 import React from 'react';
+import './BookForm.css';
 
 const BookForm = () => (
   <form>
-    <h3>ADD NEW BOOK</h3>
-    <div>
+    <h3>Add New Books</h3>
+    <div className="form-container">
       <label htmlFor="book-title">
-        <input type="text" placeholder="Book title" />
+        <input type="text" htmlFor="book-title" placeholder="book title" className="input" />
       </label>
       <label htmlFor="categories">
-        <select>
+        <select id="books categories" className="category">
           <option>Categories</option>
           <option>Fiction</option>
           <option>Non-fiction</option>
-          <option>Poetry</option>
+          <option>Self-Help</option>
+          <option>financial</option>
         </select>
       </label>
       <button type="submit">Add Book</button>
