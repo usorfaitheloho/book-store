@@ -1,6 +1,8 @@
 form {
+  max-width: 1550px;
+  width: 100%;
   padding: 2rem;
-  border: 1px solid gray;
+  border: 2px solid black;
   position: fixed;
   bottom: 0;
   z-index: 10;
@@ -19,8 +21,8 @@ form > h3 {
 }
 
 .input {
-  padding: 0.513rem 25.688rem 0.513rem 1.063rem;
-  margin-right: 1rem;
+  padding: 0.813rem 2.688rem;
+  margin-right: 2rem;
 }
 
 .category {
