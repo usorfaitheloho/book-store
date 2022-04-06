@@ -8,3 +8,7 @@
 .booklist-box > * + * {
   margin-top: 30px;
 }
+
+.notice {
+  text-align: center;
+}

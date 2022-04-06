@@ -1,40 +1,40 @@
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import uuid from 'react-uuid';
 import { addbook } from '../../redux/books/books';
 import './BookForm.css';
 
 const BookForm = () => {
-  const [book,setBook] = useState({
-    id:'',
-    title:'',
-    author : '',
+  const [book, setBook] = useState({
+    id: '',
+    title: '',
+    author: '',
   });
 
   const dispatch = useDispatch();
 
-  const handleChange = (event) =>{
-    const { name,value } = event.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setBook((prevbook) => ({
       ...prevbook,
-      id:uuid(),
+      id: uuid(),
       [name]: value,
     }));
   };
 
-  const handleSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addbook(book));
-    document.querySelector('.one').value ='';
-    document.querySelector('.two')='';
+    document.querySelector('.one').value = '';
+    document.querySelector('.two').value = '';
   };
 
-  return(
+  return (
     <form>
       <h3>Add New Books</h3>
       <div className="form-container">
         <label htmlFor="book-title">
-          <input 
+          <input
             type="text"
             htmlFor="book-title"
             placeholder="book-title"
