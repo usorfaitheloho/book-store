@@ -1,7 +1,7 @@
 const ADD_BOOK = 'book-store/books/ADD_BOOK';
 const REMOVE_BOOK = 'book-store/books/REMOVE_BOOK';
 
-const initialState = [{ title: 'Think Big', author: 'Brian Tracy' }];
+const initialState = [];
 
 export const addbook = (payload) => ({
   type: ADD_BOOK,
