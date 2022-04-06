@@ -4,9 +4,7 @@ import Bookcontainer from './component/Home/Bookcontainer';
 
 function App() {
   return (
-    <div className="container">
-      <Bookcontainer />
-    </div>
+    <Bookcontainer />
   );
 }
 
