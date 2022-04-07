@@ -6,15 +6,14 @@ const REMOVE_BOOK = 'book-store/books/REMOVE_BOOK';
 
 const initialState = [];
 
-export const addbook = (payload) => ({
-  type: ADD_BOOK,
-  payload,
-});
-
-export const removebook = (payload) => ({
-  type: REMOVE_BOOK,
-  payload,
-});
+export const addbook = (book) => async(dispatch) => {
+  await axios(API_URL)
+    .then((response) => response.json())
+    .then(
+      () => dispatch({ type: ADD_BOOK, payload:book }),
+      () => dispatch({ type: ADD_BOOK, payload:null }), 
+    );
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
