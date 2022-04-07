@@ -1,22 +1,59 @@
-import API_URL from "../../Database/database";
+import Database from "../../Database/database";
+import { func } from 'prop-types';
 
-const ADD_BOOK = 'book-store/books/ADD_BOOK';
-const REMOVE_BOOK = 'book-store/books/REMOVE_BOOK';
-const GET_BOOK = 'book-store/books/GET_BOOK';
+const ADD_BOOK_REQUEST = 'book-store/books/ADD_BOOK';
+const ADD_BOOK_SUCCESS = 'book-store/books/REMOVE_BOOK';
+const ADD_BOOK_FAIL = 'bookstore/books/ADD_BOOK_FAIL'
 
-const initialState = [];
+const GET_BOOKS_REQUEST = 'book-store/books/GET_BOOKS_REQUEST';
+const GET_BOOKS_SUCCESS = 'bookstore/books/GET_BOOKS_SUCCESS';
+const GET_BOOKS_FAIL = 'bookstore/books/GET_BOOKS_FAIL';
 
-export const addbook = (book) => async(dispatch) => {
-  await fetch(API_URL)
-    .then((response) => response.json())
-    .then(
-      () => dispatch({ type: ADD_BOOK, payload:book }),
-      () => dispatch({ type: ADD_BOOK, payload:null }), 
-    );
-};
+const REMOVE_BOOK_REQUEST = 'bookstore/books/REMOVE_BOOK_REQUEST';
+const REMOVE_BOOK_SUCCESS = 'bookstore/books/REMOVE_BOOK_SUCCESS';
+const REMOVE_BOOK_FAIL = 'bookstore/books/REMOVE_BOOK_FAIL';
+
+
+const initialState = [{
+  loading: false,
+  booksArr: {},
+  error: '',
+}];
+
+export const addBookRequest = () => ({
+  type: ADD_BOOK_REQUEST,
+})
+
+export const addbookSuccess = (booksArr) =>({
+  type: ADD_BOOK_SUCCESS, 
+  payload: booksArr,
+})
+
+export const addbookFail = (error) =>({
+  type: ADD_BOOK_FAIL, 
+  payload: error,
+})
+
+export function addbook(book) {
+  return (dispatch) => {
+    dispatch(addBookRequest());
+    const { 
+      id, title, author, category,
+    } = book;
+    Database.addBooks(id, title, author, category)
+    .then(() => {
+      const bookNew = {};
+      bookNew[id] = [{ title, author, category }];
+      dispatch(addbookSuccess(bookNew));
+    })
+    .catch((error) => {
+      dispatch(addbookFail(error.message));
+    });
+  };
+}
 
 export const getBooks = () => async (dispatch) => {
-  await get(API_URL)
+  await (API_URL)
     .then((books) => books.json())
     .then(
       (data) => dispatch({ type: GET_BOOK, payload: data }),
