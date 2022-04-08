@@ -4,6 +4,7 @@
 The Bookstore is a website that displays books available in bookstore. It tells you about the author,the genre of the book and chapter details. The site contain these features : list of books, add a book and remove a selected book.
 
 
+
 Check the live demo [here](https://usorfaitheloho-book-store.netlify.app)
 
 ## Project List
