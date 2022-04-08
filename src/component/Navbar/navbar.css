@@ -5,7 +5,6 @@
 nav {
   display: flex;
   align-items: center;
-
   width: 100%;
   padding: 20px;
   grid-template-columns: auto auto auto;
