@@ -1,8 +1,8 @@
-import Database from "../../Database/database";
+import Database from '../../Database/database';
 
 const ADD_BOOK_REQUEST = 'book-store/books/ADD_BOOK';
 const ADD_BOOK_SUCCESS = 'book-store/books/REMOVE_BOOK';
-const ADD_BOOK_FAIL = 'bookstore/books/ADD_BOOK_FAIL'
+const ADD_BOOK_FAIL = 'bookstore/books/ADD_BOOK_FAIL';
 
 const GET_BOOKS_REQUEST = 'book-store/books/GET_BOOKS_REQUEST';
 const GET_BOOKS_SUCCESS = 'bookstore/books/GET_BOOKS_SUCCESS';
@@ -12,7 +12,6 @@ const REMOVE_BOOK_REQUEST = 'bookstore/books/REMOVE_BOOK_REQUEST';
 const REMOVE_BOOK_SUCCESS = 'bookstore/books/REMOVE_BOOK_SUCCESS';
 const REMOVE_BOOK_FAIL = 'bookstore/books/REMOVE_BOOK_FAIL';
 
-
 const initialState = {
   loading: false,
   booksArr: {},
@@ -21,58 +20,58 @@ const initialState = {
 
 export const addBookRequest = () => ({
   type: ADD_BOOK_REQUEST,
-})
+});
 
-export const addBookSuccess = (booksArr) =>({
-  type: ADD_BOOK_SUCCESS, 
+export const addBookSuccess = (booksArr) => ({
+  type: ADD_BOOK_SUCCESS,
   payload: booksArr,
-})
+});
 
-export const addBookFail = (error) =>({
-  type: ADD_BOOK_FAIL, 
+export const addBookFail = (error) => ({
+  type: ADD_BOOK_FAIL,
   payload: error,
-})
+});
 
 export function addbook(book) {
   return (dispatch) => {
     dispatch(addBookRequest());
-    const { 
+    const {
       id, title, author, category,
     } = book;
     Database.addBooks(id, title, author, category)
-    .then(() => {
-      const bookNew = {};
-      bookNew[id] = [{ title, author, category }];
-      dispatch(addBookSuccess(bookNew));
-    })
-    .catch((error) => {
-      dispatch(addBookFail(error.message));
-    });
+      .then(() => {
+        const bookNew = {};
+        bookNew[id] = [{ title, author, category }];
+        dispatch(addBookSuccess(bookNew));
+      })
+      .catch((error) => {
+        dispatch(addBookFail(error.message));
+      });
   };
 }
 
 export const getBookRequest = () => ({
   type: GET_BOOKS_REQUEST,
-})
+});
 
-export const getBookSuccess = (booksArr) =>({
-  type: GET_BOOKS_SUCCESS, 
+export const getBookSuccess = (booksArr) => ({
+  type: GET_BOOKS_SUCCESS,
   payload: booksArr,
-})
+});
 
-export const getBooksFail = (error) =>({
-  type: GET_BOOKS_FAIL, 
+export const getBooksFail = (error) => ({
+  type: GET_BOOKS_FAIL,
   payload: error,
-})
+});
 
 export function getBooks() {
   return (dispatch) => {
     dispatch(getBookRequest());
     Database.getbooks()
-    .then((data) => {
-      dispatch(getBookSuccess(data));
-    })
-    .catch((error) => dispatch(getBooksFail(error.message)));
+      .then((data) => {
+        dispatch(getBookSuccess(data));
+      })
+      .catch((error) => dispatch(getBooksFail(error.message)));
   };
 }
 
@@ -90,23 +89,23 @@ export const removeBookFail = (error) => ({
   payload: error,
 });
 
-export const removeBooks = (id) => {
+export function removeBook(id) {
   return (dispatch) => {
     dispatch(removeBookRequest());
     Database.delBook(id)
-    .then(() => {
-      dispatch(removeBookSuccess(id));
-    })
-    .catch((error) => {
-      dispatch(removeBookFail(error.message));
-    });
+      .then(() => {
+        dispatch(removeBookSuccess(id));
+      })
+      .catch((error) => {
+        dispatch(removeBookFail(error.message));
+      });
   };
 }
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK_REQUEST:
-      return {...state, loading: true };
+      return { ...state, loading: true };
 
     case ADD_BOOK_SUCCESS:
       return {
@@ -120,45 +119,45 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
       };
     }
-    
-      case GET_BOOKS_REQUEST: 
-        return { ...state, loading: true };
-      
-      case GET_BOOKS_SUCCESS:
-        return {
-          ...state,
-          loading: false,
-          bookArr: action.payload,
-          error: '',
-        };
-      
-      case GET_BOOKS_FAIL: {
-        return {
-          ...state,
-          loading: false,
-          error: action.payload,
-        };
-      }
 
-      case REMOVE_BOOK_REQUEST:
+    case GET_BOOKS_REQUEST:
       return { ...state, loading: true };
 
-      case REMOVE_BOOK_SUCCESS:
-        return {
-          ...state,
-          loading: false,
-          bookArr: Object.fromEntries(
-            Object.entries(state.bookArr).filter(
-              (e) => e[0] !== action.payload,
-            ),
+    case GET_BOOKS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        bookArr: action.payload,
+        error: '',
+      };
+
+    case GET_BOOKS_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    }
+
+    case REMOVE_BOOK_REQUEST:
+      return { ...state, loading: true };
+
+    case REMOVE_BOOK_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        bookArr: Object.fromEntries(
+          Object.entries(state.bookArr).filter(
+            (e) => e[0] !== action.payload,
           ),
-          error: '',
-        };
-        
-      default:
+        ),
+        error: '',
+      };
+
+    default:
       return state;
   }
 };

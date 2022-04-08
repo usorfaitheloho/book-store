@@ -12,7 +12,7 @@ const BookList = () => {
   useEffect(() => {
     dispatch(getBooks());
   }, []);
-  
+
   const bookList = books.bookArr === undefined || Object.entries(books.bookArr).map((element) => ({
     item_id: element[0], ...element[1][0],
   }));
@@ -22,8 +22,8 @@ const BookList = () => {
       {
       bookList.length ? bookList.map((book) => (
         <Book
-          key={book.id}
-          book={book.item_id}
+          key={book.item_id}
+          book={book}
         />
       )) : <h2 className="notice">No books to display!!</h2>
       }

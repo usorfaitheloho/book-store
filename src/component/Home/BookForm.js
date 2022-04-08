@@ -57,12 +57,13 @@ const BookForm = () => {
           />
         </label>
         <label htmlFor="categories">
-          <select id="books categories" 
+          <select
+            id="books categories"
             className="category"
             name="category"
             value={book.category}
             onChange={handleChange}
-            >
+          >
             <option>Categories</option>
             <option>Fiction</option>
             <option>Non-fiction</option>
