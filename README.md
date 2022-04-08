@@ -94,46 +94,46 @@ All source code files are licensed under the permissive zlib license
 
 
 
-## Built With
 
-- Reactjs
 
-## Usage
 
-To build the project run:
 
-```
-$ npm install
-$ npm run build
-```
 
-## Development
 
-In development environment use the following command:
 
-```
-$ npm start
-```
 
-## Author
 
-👤 **MostafaGitHub: [@faith-usor](https://github.com/usorfaitheloho)
 
-- Twitter: [@faith-usor](https://twitter.com/Faith_usor16)
 
-- LinkedIn: [faith-usor](https://linkedin.com/in/faith-usor)
 
- Ahangarha**
 
-- GitHub: [@faith-usor](https://github.com/usorfaitheloho)
-- 
-As an educational project at this stage I am not supposed to accept any PR. Yet I appreciate if you can report problems from [issues page](../../issues/).
 
-## Show your support
 
-Give a ⭐️ if you like this project!
 
-## 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
