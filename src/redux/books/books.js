@@ -1,5 +1,5 @@
 import Database from "../../Database/database";
-import { func } from 'prop-types';
+import { object } from 'prop-types';
 
 const ADD_BOOK_REQUEST = 'book-store/books/ADD_BOOK';
 const ADD_BOOK_SUCCESS = 'book-store/books/REMOVE_BOOK';
@@ -91,7 +91,7 @@ export const removeBookFail = (error) => ({
   payload: error,
 });
 
-export const removeBooks(id) {
+export const removeBooks = (id) => {
   return (dispatch) => {
     dispatch(removeBookRequest());
     Database.delBook(id)
@@ -106,16 +106,59 @@ export const removeBooks(id) {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_BOOK:
-      return [...state, action.payload];
+    case ADD_BOOK_REQUEST:
+      return {...state, loading: true };
 
-    case REMOVE_BOOK:
-      return state.filter((book) => book.id !== action.payload.id);
+    case ADD_BOOK_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        bookArr: { ...state.bookArr, ...action.payload },
+        error: '',
+      };
+
+    case ADD_BOOK_FAIL: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      };
+    }
     
-      case GET_BOOK: {
-        return [...state, action.payload];
-      }
+      case GET_BOOKS_REQUEST: 
+        return { ...state, loading: true };
       
+      case GET_BOOKS_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          bookArr: action.payload,
+          error: '',
+        };
+      
+      case GET_BOOKS_FAIL: {
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
+      }
+
+      case REMOVE_BOOK_REQUEST:
+      return { ...state, loading: true };
+
+      case REMOVE_BOOK_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          bookArr: object.fromEntries(
+            Object.entries(state.bookArr).filter(
+              (e) => e[0] !== action.payload,
+            ),
+          ),
+          error: '',
+        };
+        
       default:
       return state;
   }
