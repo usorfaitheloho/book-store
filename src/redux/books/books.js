@@ -1,5 +1,4 @@
 import Database from "../../Database/database";
-import { object } from 'prop-types';
 
 const ADD_BOOK_REQUEST = 'book-store/books/ADD_BOOK';
 const ADD_BOOK_SUCCESS = 'book-store/books/REMOVE_BOOK';
@@ -14,11 +13,11 @@ const REMOVE_BOOK_SUCCESS = 'bookstore/books/REMOVE_BOOK_SUCCESS';
 const REMOVE_BOOK_FAIL = 'bookstore/books/REMOVE_BOOK_FAIL';
 
 
-const initialState = [{
+const initialState = {
   loading: false,
   booksArr: {},
   error: '',
-}];
+};
 
 export const addBookRequest = () => ({
   type: ADD_BOOK_REQUEST,
@@ -70,8 +69,8 @@ export function getBooks() {
   return (dispatch) => {
     dispatch(getBookRequest());
     Database.getbooks()
-    .then((book) => {
-      dispatch(getBookSuccess(book));
+    .then((data) => {
+      dispatch(getBookSuccess(data));
     })
     .catch((error) => dispatch(getBooksFail(error.message)));
   };
@@ -151,7 +150,7 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           loading: false,
-          bookArr: object.fromEntries(
+          bookArr: Object.fromEntries(
             Object.entries(state.bookArr).filter(
               (e) => e[0] !== action.payload,
             ),
