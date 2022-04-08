@@ -3,13 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Book.css';
 import { useDispatch } from 'react-redux';
-import { removebook } from '../../../redux/books/books';
+import { removeBook } from '../../../redux/books/books';
 
 const Book = ({ book }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => (
-    dispatch(removebook(book))
+    dispatch(removeBook(book.item_id))
   );
   return (
     <li className="bookItem">
