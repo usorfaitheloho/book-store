@@ -5,9 +5,8 @@ import './Book.css';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../../../redux/books/books';
 
-const Book = ({ book }) => {
+const Book = ({ book, chapter, progress }) => {
   const dispatch = useDispatch();
-
   const handleDelete = () => (
     dispatch(removeBook(book.item_id))
   );
@@ -16,13 +15,15 @@ const Book = ({ book }) => {
       <ul className="bookItems-secs">
         <li className="bookDetails">
           <ul className="books">
-            <li className="genre">{}</li>
-            <li className="booktitle">{book.title}</li>
+            <li className="genre">{book.category}</li>
+            <li className="booktitle" title={book.title}>{book.title}</li>
             <li className="bookAuthor">{book.author}</li>
           </ul>
           <ul className="actionButtons">
             <li><button type="button">Comments</button></li>
+            <hr />
             <li><button type="button" onClick={handleDelete}>Remove</button></li>
+            <hr />
             <li><button type="button">Edit</button></li>
           </ul>
         </li>
@@ -31,7 +32,7 @@ const Book = ({ book }) => {
             <li className="update-secInner">
               <span className="circle" />
               <ul className="percentage">
-                <li className="number">{}</li>
+                <li className="number">{`${chapter}%`}</li>
                 <li>Complete</li>
               </ul>
             </li>
@@ -43,7 +44,7 @@ const Book = ({ book }) => {
             <li>
               Chapter
               {' '}
-              <span className="chapter">{}</span>
+              <span className="chapter">{progress}</span>
             </li>
             <li><button type="button">UPDATE PROGRESS</button></li>
           </ul>

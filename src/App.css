@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/montserrat');
+@import url('https://fonts.cdnfonts.com/css/roboto-slab-2');
+
 .container {
   display: flex;
 }
