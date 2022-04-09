@@ -1,50 +1,47 @@
-![](https://img.shields.io/badge/Microverse-blueviolet)
+# Bookstore
 
-# Bookstore (Microverse project)
+![](./public/images/screenshot.PNG)
+The Bookstore is a website that displays books available in bookstore. It tells you about the author,the genre of the book and chapter details. The site contain these features : list of books, add a book and remove a selected book.
 
-This is an educational project to make a bookstore webapp using Reactjs.
 
-## Built With
+Check the live demo [here](https://usorfaitheloho-book-store.netlify.app)
 
-- Reactjs
+## Project List
 
-## Usage
+- [x] Initialize project with components (React only).
+- [x] Add reducers and actions.
+- [x] Use Redux in React components.
+- [x] Connect to API.
+- [x] Styling.
 
-To build the project run:
+## Built with
+- React
+- CSS3
 
-```
-$ npm install
-$ npm run build
-```
+## Getting Started
+To get a local copy up and running follow the steps below
 
-## Development
+### 
+- clone this repo by copy pasting this on your terminal ``git clone https://github.com/usorfaitheloho/book-store.git``
 
-In development environment use the following command:
-
-```
-$ npm start
-```
+- open the project folder 'cd book-store'
+- Run 'npm install' to install all dependencies
+- Run 'npm start' to start the live server
 
 ## Author
-
-👤 **Mostafa Ahangarha**
-
+**Faith Usor**
 - GitHub: [@faith-usor](https://github.com/usorfaitheloho)
 - Twitter: [@faith-usor](https://twitter.com/Faith_usor16)
 - LinkedIn: [faith-usor](https://linkedin.com/in/faith-usor)
 
-## 🤝 Contributing
+## Contributing
+Contributions, issues, and feature requests are welcome!
 
-As an educational project at this stage I am not supposed to accept any PR. Yet I appreciate if you can report problems from [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/usorfaitheloho/book-store/issues)
 
-## Show your support
+## Show your Support
+Give a star if you like this project!
 
-Give a ⭐️ if you like this project!
 
-## Acknowledgments
-
-- Linters are made by Microverse Inc.
-
-## 📝 License
-
-This project is released under [AGPL](./LICENSE) licensed.
+## License
+This project is under the [MIT](./LICENSE) license.
